@@ -345,7 +345,7 @@ function openid_profile_panel() {
 		<table class="form-table">
 			<tr>
 				<th scope="row"><label for="openid_identifier"><?php _e('Add OpenID', 'openid') ?></label></th>
-				<td><input id="openid_identifier" name="openid_identifier" /></td>
+				<td><input id="openid_identifier" name="openid_identifier" value="https://www.google.com/accounts/o8/id" size="35" /></td>
 			</tr>
 		</table>
 		<?php wp_nonce_field('openid-add_openid'); ?>

@@ -1,13 +1,27 @@
 <?php
 /*
- Plugin Name: OpenID
- Plugin URI: http://wordpress.org/extend/plugins/openid
- Description: Allows the use of OpenID for account registration, authentication, and commenting.  Also includes an OpenID provider which can turn WordPress author URLs into OpenIDs.
- Author: DiSo Development Team
- Author URI: http://diso-project.org/
- Version: 3.3.3
- License: Dual GPL (http://www.fsf.org/licensing/licenses/info/GPLv2.html) and Modified BSD (http://www.fsf.org/licensing/licenses/index_html#ModifiedBSD)
- Text Domain: openid
+ Plugin Name: Google Apps Login with OpenID
+ Plugin URI: https://github.com/logoscreative/wordpress-openid
+ Description: Minimizes OpenID plugin to use as a Google Login for WordPress
+ Author: cliffseal
+ Author URI: http://pardot.com
+ Version: 1.0
+ License:
+
+  Copyright 2012 TODO (email@domain.com)
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License, version 2, as 
+  published by the Free Software Foundation.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
 define ( 'OPENID_PLUGIN_REVISION', preg_replace( '/\$Rev: (.+) \$/', '\\1',

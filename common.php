@@ -743,12 +743,14 @@ function openid_js_setup() {
 function openid_style() {
 	if ( !wp_style_is('openid', 'registered') ) {
 		wp_register_style('openid', plugins_url('openid/f/openid.css'), array(), OPENID_PLUGIN_REVISION);
+		
 	}
 
 	if ( did_action('wp_print_styles') ) {
 		wp_print_styles('openid');
 	} else {
 		wp_enqueue_style('openid');
+		wp_enqueue_script('jquery');
 	}
 }
 

@@ -120,16 +120,22 @@ function openid_wp_login_head() {
  **/
 function openid_wp_login_form() {
 	echo '<hr id="openid_split" style="clear: both; margin-bottom: 1.0em; border: 0; border-top: 1px solid #999; height: 1px;" />';
-
+	$user_info = get_userdata(1);
+	$changeto = $user_info->user_url;
 	echo '
 	<p style="margin-bottom: 8px;">
-		<label style="display: block; margin-bottom: 5px;">' . __('Or login using an OpenID', 'openid') . '<br />
-		<input type="text" name="openid_identifier" id="openid_identifier" class="input openid_identifier" value="" size="20" tabindex="25" /></label>
-	</p>
-
-	<p style="font-size: 0.9em; margin: 8px 0 24px 0;" id="what_is_openid">
-		<a href="http://openid.net/what/" target="_blank">'.__('Learn about OpenID', 'openid').'</a>
-	</p>';
+		<label style="display: block; margin-bottom: 5px;">' . __('Login with Google Apps', 'openid') . '<br />
+		<input type="text" name="openid_identifier" id="openid_identifier" class="input openid_identifier" value="" size="20" tabindex="25" onkeyup="checkDomain()" /></label>
+	</p>		
+	
+	<script type="text/javascript">
+			function checkDomain() {
+				var check = jQuery(\'#openid_identifier\').value;
+				if (check.substring(check.indexOf("@")) === \'@pardot.com\') {
+					alert(\'yes\');
+				}
+			}
+		</script>';
 }
 
 
@@ -173,10 +179,6 @@ function openid_wp_register_form() {
 		<p>
 			<label style="display: block; margin-bottom: 5px;">' . $label . '<br />
 			<input type="text" name="openid_identifier" id="openid_identifier" class="input openid_identifier" value="" size="20" tabindex="25" /></label>
-		</p>
-
-		<p style="float: left; font-size: 0.8em; margin: 0.8em 0;" id="what_is_openid">
-			<a href="http://openid.net/what/" target="_blank">'.__('Learn about OpenID', 'openid').'</a>
 		</p>
 
 	</div>';
