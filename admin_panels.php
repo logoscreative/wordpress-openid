@@ -326,6 +326,7 @@ function openid_profile_panel() {
 
 				if (empty($urls)) {
 					echo '<tr><td colspan="2">'.__('No Verified Accounts.', 'openid').'</td></tr>';
+					echo '<div class="error"><p>To verify your Pardot.com email address, click "Add OpenID" below. The URL is already in the field for you!</p></div>';
 				} else {
 					foreach ($urls as $url) {
 						echo '
@@ -340,7 +341,6 @@ function openid_profile_panel() {
 			</tbody>
 			</table>
 		</form>
-
 		<form method="post">
 		<table class="form-table">
 			<tr>
