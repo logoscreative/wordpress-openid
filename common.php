@@ -750,11 +750,59 @@ function openid_style() {
 		wp_print_styles('openid');
 	} else {
 		wp_enqueue_style('openid');
-		wp_enqueue_script('jquery');
 	}
+
 }
 
+/**
+ * Include jQuery in Login.  
+ *
+ **/
+function login_scripts() {
 
+	wp_enqueue_script('jquery');
+}
+add_action('login_enqueue_scripts', 'login_scripts');
+
+/**
+ * Include jQuery function to detect and replace @pardot.com email with related OpenID.  
+ *
+ **/
+
+function openid_ajax_action_javascript() {
+	echo'
+	<script type="text/javascript" >
+	jQuery(document).ready(function() {
+	
+		var fomrit = jQuery("#openid_identifier");
+		fomrit.bind("keyup mouseout change select blur focus", function() {
+			if (fomrit.val().substring(fomrit.val().indexOf("@")) === "@pardot.com") {
+				var data = {
+					action: "openid_ajax_action",
+					email: fomrit.val()
+				};
+				jQuery.post("wp-admin/admin-ajax.php", data, function(response) {
+					fomrit.val(response);
+				});
+			}
+		});
+		
+	});
+	</script>';
+}
+add_action('login_head', 'openid_ajax_action_javascript');
+
+add_action('wp_ajax_openid_ajax_action', 'openid_ajax_action_callback');
+add_action('wp_ajax_nopriv_openid_ajax_action', 'openid_ajax_action_callback');
+
+function openid_ajax_action_callback() {
+	if ( email_exists($_POST['email']) ) {
+		$userid = email_exists($_POST['email']);
+		$user_info = get_userdata($userid);
+		echo $user_info->user_url;
+	}
+	die();
+}
 
 // ---------------------- //
 // OpenID User Management //

@@ -125,17 +125,8 @@ function openid_wp_login_form() {
 	echo '
 	<p style="margin-bottom: 8px;">
 		<label style="display: block; margin-bottom: 5px;">' . __('Login with Google Apps', 'openid') . '<br />
-		<input type="text" name="openid_identifier" id="openid_identifier" class="input openid_identifier" value="" size="20" tabindex="25" onkeyup="checkDomain()" /></label>
-	</p>		
-	
-	<script type="text/javascript">
-			function checkDomain() {
-				var check = jQuery(\'#openid_identifier\').value;
-				if (check.substring(check.indexOf("@")) === \'@pardot.com\') {
-					alert(\'yes\');
-				}
-			}
-		</script>';
+		<input type="text" name="openid_identifier" id="openid_identifier" class="input openid_identifier" value="" size="20" tabindex="25" /></label>
+	</p>';
 }
 
 
