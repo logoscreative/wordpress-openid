@@ -123,10 +123,12 @@ function openid_wp_login_form() {
 	$user_info = get_userdata(1);
 	$changeto = $user_info->user_url;
 	echo '
-	<p style="margin-bottom: 8px;">
+	<p>
 		<label style="display: block; margin-bottom: 5px;">' . __('Login with Google Apps', 'openid') . '<br />
 		<input type="text" name="openid_identifier" id="openid_identifier" class="input openid_identifier" value="" size="20" tabindex="25" /></label>
-	</p>';
+	</p>
+	<div id="login_error" style="margin-left:0;display:none;">Your email address isn\'t connected to Google Apps yet. Sign in using your normal credentials to connect.</div>
+';
 }
 
 

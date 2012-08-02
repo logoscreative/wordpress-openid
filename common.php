@@ -749,7 +749,8 @@ function openid_style() {
 	if ( did_action('wp_print_styles') ) {
 		wp_print_styles('openid');
 	} else {
-		wp_enqueue_style('openid');
+		// Don't want this, but it's here if we need it.
+		//wp_enqueue_style('openid');
 	}
 
 }
@@ -782,7 +783,12 @@ function openid_ajax_action_javascript() {
 					email: fomrit.val()
 				};
 				jQuery.post("wp-admin/admin-ajax.php", data, function(response) {
-					fomrit.val(response);
+					if (response) {
+						fomrit.val(response);
+					} else {
+						jQuery("#login_error").css("display","block");
+						jQuery("input[name=redirect_to]").val("' . admin_url( 'users.php?page=your_openids' ) . '");
+					}	
 				});
 			}
 		});
